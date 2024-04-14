@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 # Install fish shell and set it as default shell
 if "$(uname)" == "Darwin"; then
   brew install fish

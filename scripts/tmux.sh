@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 # Install tmux
 if test "$(uname)" == "Darwin"; then
   brew install tmux
