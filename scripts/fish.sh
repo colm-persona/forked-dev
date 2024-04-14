@@ -10,5 +10,6 @@ else
   exit 1
 fi
 
+# set fish as default shell
 echo /usr/local/bin/fish | sudo tee -a /etc/shells
 chsh -s /usr/local/bin/fish
