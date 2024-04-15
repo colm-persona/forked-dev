@@ -2,7 +2,7 @@
 
 # get dependencies
 if test "$(uname)" == "Darwin"; then
-  brew install -y ninja cmake gettext curl lua5.4
+  brew install ninja cmake gettext curl lua5.4
 elif test "$(uname)" == "Linux"; then
   sudo apt-get install -y ninja-build gettext cmake unzip curl build-essential
 else

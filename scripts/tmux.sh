@@ -2,7 +2,7 @@
 
 # Install tmux
 if test "$(uname)" == "Darwin"; then
-  brew install -y tmux
+  brew install tmux
 elif test "$(uname)" == "Linux"; then
   sudo apt-get install -y tmux
 else
