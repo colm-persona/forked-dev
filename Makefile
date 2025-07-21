@@ -11,7 +11,7 @@ all: link
 link: $(DOTFILES_LIST)
 
 $(DOTFILES_LIST): update-nvim
-	@ln -sf $(DOTFILES)/$@ $(TARGET_DIR)/$@
+	@ln -sfv $(DOTFILES)/$@ $(TARGET_DIR)
 
 update-nvim:
 	@git submodule update --init --recursive
