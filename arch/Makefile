@@ -1,13 +1,16 @@
 include ../Makefile
 
-all: steam nvim ensure-oh-my-zsh link
+all: update-boot-conf steam nvim ensure-oh-my-zsh link
+
+update-boot-conf:
+	@echo "TODO: CHANGE THE timeout in /boot/loader/loader.conf TO ZERO!"
+	@echo "TODO: COMMENT OUT nvidia-uvm IN /usr/lib/modules-load.d"
 
 steam: enable-multilib
 	@sudo pacman -Qi steam || sudo pacman -Syu --noconfirm steam
 
 enable-multilib:
-	@echo "YOU MUST UN-COMMENT the multilib inclusion in the /etc/pacman.conf config file!"
-
+	@echo "TODO: YOU MUST UN-COMMENT the multilib inclusion in the /etc/pacman.conf config file!"
 
 nvim: build-neovim-src
 	@sudo pacman -Qi lua51 || sudo pacman -S --noconfirm lua51
