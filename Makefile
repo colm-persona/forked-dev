@@ -4,6 +4,7 @@ TARGET_DIR = $$HOME
 
 DOTFILES_LIST = \
 	.zshrc \
+	.zsh_profile \
 	.tmux.conf\
 	.config/hypr \
 	.config/nvim
@@ -20,7 +21,8 @@ update-nvim:
 
 .PHONY: ensure-oh-my-zsh
 ensure-oh-my-zsh:
-	@if [ ! -d ]; then \
+	@if [ ! -d ~/.oh-my-zsh ]; then \
 		echo "Oh My Zsh not found. Installing..."; \
-		RUNZSH=no CHSH=no sh -c "$$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"; \
-	fi
+		RUNZSH=no CHSH=yes sh -c "$$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"; \
+		chsh -s $$(which zsh); \
+	fi;
