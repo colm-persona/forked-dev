@@ -5,7 +5,8 @@ TARGET_DIR = $$HOME
 DOTFILES_LIST = \
 	.zshrc \
 	.zsh_profile \
-	.tmux.conf\
+	.tmux.conf \
+	.config/tmux \
 	.config/hypr \
 	.config/nvim
 
