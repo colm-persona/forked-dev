@@ -2,7 +2,7 @@ include ../Makefile
 
 all: install-packages update-boot-conf nvim ensure-oh-my-zsh link
 
-PACKAGES := tmux go steam lua51 luarocks base-devel cmake unzip ninja curl
+PACKAGES := tmux go steam lua51 luarocks base-devel cmake unzip ninja curl rofi-wayland waybar
 # todo: add -> man-pages man-db
 
 install-packages: $(PACKAGES)

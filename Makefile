@@ -7,8 +7,9 @@ DOTFILES_LIST = \
 	.zsh_profile \
 	.tmux.conf \
 	.config/tmux \
+	.config/nvim \
 	.config/hypr \
-	.config/nvim
+	.config/rofi
 
 all: link
 
