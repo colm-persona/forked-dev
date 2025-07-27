@@ -1,5 +1,35 @@
 * {
-    font-family: "JetBrains Mono Nerd Font";
-    font-weight: bold; 
-    font-size: 15px;
+  font-family: "JetBrains Mono Nerd Font";
+  /*font-family: "JetBrainsMono Nerd Font";*/
+  font-weight: bold; 
+  font-size: 15px;
+  color: #A1BDCE;
+}
+
+window#waybar {
+  background: rgba(15, 15, 23, 0.7); 
+  border: 3px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+}
+
+#workspaces{
+  background: rgba(23, 23, 23, 0.0);
+  box-shadow: none;
+  text-shadow: none;
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-top: 1px;
+}
+
+#workspaces button {
+  background: rgba(23, 23, 23, 0.0);
+  border: none;
+  box-shadow: none;
+  text-shadow: none;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#custom-spacer {
+  opacity: 0.0;
 }

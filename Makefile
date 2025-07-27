@@ -10,7 +10,9 @@ DOTFILES_LIST = \
 	.config/nvim \
 	.config/hypr \
 	.config/waybar \
-	.config/rofi
+	.config/fontconfig \
+	.config/rofi \
+	.fonts
 
 all: link
 
