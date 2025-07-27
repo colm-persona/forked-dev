@@ -1,14 +1,18 @@
+MKFILE_PATH := $(abspath $(lastword $(MAKEFILE_LIST)))
+WP_DIR := "$(dir $(MKFILE_PATH))wallpapers"
+
 include ../Makefile
 
-all: install-packages update-boot-conf nvim ensure-oh-my-zsh link
+all: install update-boot-conf nvim ensure-oh-my-zsh link sync-wallpapers
 
-PACKAGES := tmux go steam lua51 luarocks base-devel cmake unzip ninja curl rofi-wayland waybar
+PACKAGES := tmux go steam lua51 luarocks base-devel cmake unzip ninja curl rofi-wayland waybar btop hyprpaper
 # todo: add -> man-pages man-db
 
-install-packages: $(PACKAGES)
+.PHONY: install
+install: $(PACKAGES)
 
 $(PACKAGES):
-	@echo "Checking if $@ is installed..."
+	@echo "Ensuring $@ is installed..."
 	@pacman -Qi $@ > /dev/null 2>&1 || { \
 		echo "Installing $@..."; \
 		sudo pacman -S --noconfirm $@; \
@@ -37,4 +41,5 @@ build-neovim-src: $(NEOVIM_SOURCE) $(PACKAGES)
 	make CMAKE_BUILD_TYPE=RelWithDebInfo && \
 	sudo make install;
 
-
+sync-wallpapers:
+	@sudo mkdir -p /wallpapers && sudo cp $(WP_DIR)/* /wallpapers
