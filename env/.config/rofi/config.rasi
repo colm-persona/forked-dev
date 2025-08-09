@@ -3,4 +3,6 @@ configuration {
   combi-modes: [ window, drun, run];
 }
 
-@theme "gruvbox-light"
+//@theme "gruvbox-light"
+
+@theme "/usr/share/rofi/themes/gruvbox-dark-soft.rasi"

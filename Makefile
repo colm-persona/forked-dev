@@ -9,6 +9,7 @@ DOTFILES_LIST = \
 	.config/tmux \
 	.config/nvim \
 	.config/hypr \
+	.config/kitty \
 	.config/waybar \
 	.config/fontconfig \
 	.config/rofi \
