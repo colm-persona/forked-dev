@@ -44,9 +44,10 @@ RUN curl -o /home/vscode/.git-completion.bash https://raw.githubusercontent.com/
 # Append git-completion source command to .bashrc
 RUN echo 'if [ -f ~/.git-completion.bash ]; then\n  . ~/.git-completion.bash\nfi' >> /home/vscode/.bashrc
 
-# Copy my dotfiles
-COPY .. /home/vscode/dev
-RUN cd /home/vscode/dev && pwd && make
+# Link my dotfiles
+COPY ./env/ /home/vscode/dev/env/
+COPY ./Makefile /home/vscode/dev/Makefile
+RUN make -C /home/vscode/dev
 
 RUN sudo chown -R 1000:1000 /home/vscode/.config
 RUN sudo chmod -R 755 /home/vscode/.config
@@ -56,4 +57,4 @@ RUN nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerClean'
 RUN nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
 RUN nvim --headless -c 'sleep 10' -c 'qall'
 RUN nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
-RUN nvim --headless -c 'MasonUpdate' -c 'MasonInstall --force basedpyright terraform systemd-language-server gopls rust-analyzer' -c 'quitall'
+RUN nvim --headless -c 'MasonUpdate' -c 'MasonInstall --force basedpyright terraform systemd-language-server gopls rust-analyzer' -c 'quitall' || true

@@ -34,21 +34,5 @@ update-boot-conf:
 enable-multilib:
 	@echo "TODO: YOU MUST UN-COMMENT the multilib inclusion in the /etc/pacman.conf config file!"
 
-PACKER=~/.local/share/nvim/site/pack/packer/start/packer.nvim
-$(PACKER):
-	@git clone --depth 1 https://github.com/wbthomason/packer.nvim $(PACKER)
-
-NEOVIM_SOURCE=~/neovim
-$(NEOVIM_SOURCE):
-	@git clone https://github.com/neovim/neovim.git $(NEOVIM_SOURCE)
-
-nvim: $(PACKER) build-neovim-src
-
-build-neovim-src: $(NEOVIM_SOURCE) $(PACMAN_PACKAGES)
-	@cd ~/neovim && \
-	git checkout v0.10.4 && \
-	make CMAKE_BUILD_TYPE=RelWithDebInfo && \
-	sudo make install;
-
 sync-wallpapers:
 	@sudo mkdir -p /wallpapers && sudo cp $(WP_DIR)/* /wallpapers

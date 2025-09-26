@@ -15,15 +15,18 @@ DOTFILES_LIST = \
 	.config/rofi \
 	.fonts
 
-all: link
+all: link nvim
 
 link: $(DOTFILES_LIST)
 
-$(DOTFILES_LIST): update-nvim
+$(DOTFILES_LIST):
 	@ln -sfv $(DOTFILES)/$@ $(dir $(TARGET_DIR)/$@)
 
 update-nvim:
 	@git submodule update --init --recursive
+	@cd $(DOTFILES)/.config/nvim && git pull origin main
+	@git add $(DOTFILES)/.config/nvim
+	@git commit -m "chore: bump nvim config to latest" || echo "No changes to commit"
 
 .PHONY: ensure-oh-my-zsh
 ensure-oh-my-zsh:
@@ -32,3 +35,20 @@ ensure-oh-my-zsh:
 		RUNZSH=no CHSH=yes sh -c "$$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"; \
 		chsh -s $$(which zsh); \
 	fi;
+
+PACKER=~/.local/share/nvim/site/pack/packer/start/packer.nvim
+$(PACKER):
+	@git clone --depth 1 https://github.com/wbthomason/packer.nvim $(PACKER)
+
+NEOVIM_SOURCE=~/neovim
+$(NEOVIM_SOURCE):
+	@git clone https://github.com/neovim/neovim.git $(NEOVIM_SOURCE)
+
+nvim: $(PACKER) build-neovim-src
+
+build-neovim-src: $(NEOVIM_SOURCE) $(PACMAN_PACKAGES)
+	@cd ~/neovim && \
+	git checkout v0.11.4 && \
+	make CMAKE_BUILD_TYPE=RelWithDebInfo && \
+	sudo make install;
+
