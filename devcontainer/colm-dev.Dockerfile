@@ -49,8 +49,11 @@ COPY ./env/ /home/vscode/dev/env/
 COPY ./Makefile /home/vscode/dev/Makefile
 RUN make -C /home/vscode/dev
 
+RUN sudo chown -R 1000:1000 /home/vscode/dev
+RUN sudo chmod -R 755 /home/vscode/dev
 RUN sudo chown -R 1000:1000 /home/vscode/.config
 RUN sudo chmod -R 755 /home/vscode/.config
+RUN find /home/vscode/dev/env -type f -name 'packer_compiled.lua' -delete
 
 # install plugins and quit when done
 RUN nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerClean'
