@@ -9,11 +9,11 @@ dotfiles:
 build-base:
 	@cd ~/persona && docker build -t persona -f dockerfiles/Dockerfile.dev .
 
-build: dotfiles
+build: dotfiles build-base
 	@docker build -t colm-dev -f colm-dev.Dockerfile ${PROJECT_DIR}
 
 
-WORKSPACE ?= "~/persona"
+WORKSPACE ?= "/mnt/persona-disk/home/ubuntu/persona"
 
 run:
 	@if [ ! "${WORKSPACE}" ]; then \
