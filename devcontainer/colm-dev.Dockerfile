@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/devcontainers/python:1-3.11-bookworm
+FROM persona
 
 RUN echo "Configuring Colm's dev environment..."
 

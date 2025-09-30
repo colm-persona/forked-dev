@@ -6,6 +6,9 @@ all: run
 dotfiles:
 	@make -C ${PROJECT_DIR} update-nvim
 
+build-base:
+	@cd ~/persona && docker build -t persona -f dockerfiles/Dockerfile.dev .
+
 build: dotfiles
 	@docker build -t colm-dev -f colm-dev.Dockerfile ${PROJECT_DIR}
 
