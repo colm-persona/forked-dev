@@ -12,6 +12,9 @@ build-base:
 build: dotfiles
 	@docker build -t colm-dev -f colm-dev.Dockerfile ${PROJECT_DIR}
 
+
+WORKSPACE ?= "~/persona"
+
 run:
 	@if [ ! "${WORKSPACE}" ]; then \
 		echo "usage: WORKSPACE=path/to/workspace make run"; \
