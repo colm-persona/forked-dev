@@ -60,4 +60,4 @@ RUN nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerClean'
 RUN nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
 RUN nvim --headless -c 'sleep 10' -c 'qall'
 RUN nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
-RUN nvim --headless -c 'MasonUpdate' -c 'MasonInstall --force basedpyright terraform systemd-language-server gopls rust-analyzer' -c 'quitall' || true
+RUN nvim --headless -c 'MasonUpdate' -c 'MasonInstall --force basedpyright terraform systemd-language-server gopls rust-analyzer typescript-language-server' -c 'quitall' || true
