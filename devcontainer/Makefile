@@ -28,10 +28,10 @@ run:
 		-v ~/go/bin:/home/vscode/go/bin:ro \
 		--network host \
 		--cap-add SYS_PTRACE \
-		-w /workspace -u 1000:1000 --name colm-dev colm-dev bash; \
+		-w /workspace -u 1000:1000 --name colm-dev colm-dev zsh; \
 		echo "colm-dev container started"; \
 	fi
-	@docker exec -it colm-dev bash; \
+	@docker exec -it colm-dev zsh; \
 
 clean:
 	@docker kill colm-dev || true
